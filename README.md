@@ -183,7 +183,27 @@ Frontend:
 http://localhost:5173
 
 ---
+## Dashboard
 
+![Dashboard](assets/dashboard.png)
+
+---
+
+## Procurement Analytics
+
+![Analytics](assets/analysis.png)
+
+---
+
+## Invoice Intelligence
+
+![Invoice Query](assets/chatbox.png)
+
+---
+
+## Risk Assessment
+
+![Risk Report](assets/risk_report.png)
 ## Future Improvements
 
 * Multi-user authentication
