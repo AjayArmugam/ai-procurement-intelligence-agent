@@ -89,11 +89,30 @@ def health():
 @api.post("/query")
 def query_agent(request: QueryRequest):
 
-         return {
-                "question": request.question,
-                "answer": "Backend is working correctly."
-              }
+    try:
 
+        result = procurement_graph.invoke(
+            {
+                "question": request.question,
+                "intent": "",
+                "context": "",
+                "answer": ""
+            }
+        )
+
+        return {
+            "question": request.question,
+            "answer": result["answer"]
+        }
+
+    except Exception as e:
+
+        print("\nERROR IN QUERY ENDPOINT:")
+        print(e)
+
+        return {
+            "error": str(e)
+        }
 
 # =====================================
 # Upload PDF Endpoint
