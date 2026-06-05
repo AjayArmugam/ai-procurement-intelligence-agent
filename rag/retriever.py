@@ -9,7 +9,10 @@ client = chromadb.PersistentClient(
 collection = client.get_or_create_collection(
     name="procurement_docs"
 )
-
+print(
+    "COLLECTION COUNT:",
+    collection.count()
+)
 # =====================================
 # Lazy Load Model
 # =====================================
