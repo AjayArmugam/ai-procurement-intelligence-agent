@@ -19,20 +19,13 @@ client = OpenAI(
     )
 )
 
-
 def generate_response(
     question,
     context
 ):
 
     print(
-        "DEBUG: generate_response called"
+        "OPENROUTER TEST STARTED"
     )
 
-    return f"""
-QUESTION:
-{question}
-
-CONTEXT:
-{context}
-"""
+    return "OpenRouter test successful"
