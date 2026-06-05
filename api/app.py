@@ -88,8 +88,6 @@ def health():
 @api.post("/query")
 def query_agent(request: QueryRequest):
 
-    print("QUERY RECEIVED:", request.question)
-
     result = procurement_graph.invoke(
         {
             "question": request.question,
@@ -99,9 +97,10 @@ def query_agent(request: QueryRequest):
         }
     )
 
-    print("GRAPH FINISHED")
-
-    return result
+    return {
+        "question": request.question,
+        "answer": result["answer"]
+    }
 # =====================================
 # Upload PDF Endpoint
 # =====================================
