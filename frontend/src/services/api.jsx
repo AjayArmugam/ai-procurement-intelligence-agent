@@ -1,5 +1,7 @@
+import axios from "axios";
+
 const api = axios.create({
-  baseURL:
-    "https://procurement-backend-24dh.onrender.com"
-})
+  baseURL: "https://procurement-backend-24dh.onrender.com"
+});
+
 export default api;
