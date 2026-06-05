@@ -98,30 +98,19 @@ def search_documents(
                 ],
             }
 
-    # =====================================
-    # Semantic Search
-    # =====================================
+   
+# =====================================
+# Semantic Search Disabled
+# =====================================
 
-    model = get_model()
-
-    query_embedding = model.encode(
-        query
-    ).tolist()
-
-    results = collection.query(
-        query_embeddings=[
-            query_embedding
-        ],
-        n_results=n_results
+    print(
+        "Semantic search disabled"
     )
 
-    print("\nRETRIEVED DOCUMENTS:\n")
-
-    for doc in results["documents"][0]:
-
-        print("=" * 50)
-        print(doc)
-        print()
+    return {
+        "documents": [[]],
+        "metadatas": [[]]
+    }
     # =====================================
     # Debug Distances
     # =====================================
