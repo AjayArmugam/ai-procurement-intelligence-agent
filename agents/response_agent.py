@@ -8,14 +8,14 @@ from openai import OpenAI
 load_dotenv()
 
 print(
-    "OPENAI_API_KEY EXISTS:",
-    bool(os.getenv("OPENAI_API_KEY"))
+    "OPENROUTER_API_KEY EXISTS:",
+    bool(os.getenv("OPENROUTER_API_KEY"))
 )
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.getenv(
-        "OPENAIROUTER_API_KEY"
+        "OPENROUTER_API_KEY"
     )
 )
 
