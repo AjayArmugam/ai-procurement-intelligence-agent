@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://procurement-backend-24dh.onrender.com"
+  baseURL: "ai-procurement-intelligence-agent-production.up.railway.app"
 });
 
 export default api;
