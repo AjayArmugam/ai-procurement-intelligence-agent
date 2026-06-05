@@ -43,11 +43,16 @@ def get_invoice_status(
 
     query = text("""
         SELECT
-            invoice_number,
-            amount,
-            status
-        FROM invoices
-        WHERE invoice_number = :invoice_number
+            i.invoice_number,
+            v.vendor_name,
+            i.amount,
+            i.invoice_date,
+            i.due_date,
+            i.status
+        FROM invoices i
+        LEFT JOIN vendors v
+            ON i.vendor_id = v.vendor_id
+        WHERE i.invoice_number = :invoice_number
     """)
 
     with engine.connect() as conn:
