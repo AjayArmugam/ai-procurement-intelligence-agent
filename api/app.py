@@ -90,10 +90,18 @@ def query_agent(request: QueryRequest):
 
     print("QUERY RECEIVED:", request.question)
 
-    return {
-        "question": request.question,
-        "answer": "TEST SUCCESS"
-    }
+    result = procurement_graph.invoke(
+        {
+            "question": request.question,
+            "intent": "",
+            "context": "",
+            "answer": ""
+        }
+    )
+
+    print("GRAPH FINISHED")
+
+    return result
 # =====================================
 # Upload PDF Endpoint
 # =====================================
