@@ -4,15 +4,6 @@ import os
 
 from sentence_transformers import SentenceTransformer
 
-print("CURRENT DIRECTORY:")
-print(os.getcwd())
-
-print("CHROMA EXISTS:")
-print(os.path.exists("./chroma_db"))
-
-if os.path.exists("./chroma_db"):
-    print("CHROMA FILES:")
-    print(os.listdir("./chroma_db"))
 
 client = chromadb.PersistentClient(
     path="./chroma_db"
@@ -136,9 +127,6 @@ def search_documents(
         n_results=n_results
     )
 
-    print(
-        "\nRETRIEVED DOCUMENTS:\n"
-    )
 
     for doc in results[
         "documents"
@@ -152,8 +140,6 @@ def search_documents(
     print("QUERY:")
     print(query)
 
-    print("\nDISTANCES:")
-    print(results["distances"])
 
     print("=" * 50 + "\n")
 

@@ -98,8 +98,16 @@ def detect_intent(state):
         state["intent"] = "database"
 
     elif (
-            "summary" in question
-            or "report" in question
+        "summary" in question
+        or "business justification" in question
+        or "line item" in question
+        or "invoice details" in question
+        or "invoice summary" in question
+    ):
+        state["intent"] = "rag"
+
+    elif (
+            "report" in question
             or "executive" in question
         ):
             state["intent"] = "summary"
