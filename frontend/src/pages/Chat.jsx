@@ -31,7 +31,7 @@ function Chat() {
   useState("");
 
   const [uploading, setUploading] =
-    useState(false);
+  useState(false);
 
   useEffect(() => {
 
@@ -192,31 +192,50 @@ function Chat() {
 
   return (
 
+    // Fix 2: Reduced container padding on mobile
     <div
       style={{
-        marginTop: "50px",
-        padding: "20px",
+        marginTop:
+          window.innerWidth < 768
+            ? "20px"
+            : "50px",
+        padding:
+          window.innerWidth < 768
+            ? "10px"
+            : "20px",
         maxWidth: "1200px",
         marginLeft: "auto",
         marginRight: "auto"
       }}
     >
 
+      {/* Fix 1: Header Section - Responsive flex direction */}
       <div
         style={{
           display: "flex",
+          flexDirection:
+            window.innerWidth < 768
+              ? "column"
+              : "row",
+          gap: "15px",
           justifyContent:
             "space-between",
-          alignItems: "center",
+          alignItems:
+            window.innerWidth < 768
+              ? "flex-start"
+              : "center",
           marginBottom: "20px"
         }}
       >
 
         <div>
 
-          <h2
+         <h2
             style={{
-              fontSize: "34px",
+              fontSize:
+                window.innerWidth < 768
+                  ? "24px"
+                  : "34px",
               marginBottom: "8px"
             }}
           >
@@ -251,6 +270,7 @@ function Chat() {
             }}
          />
 
+        {/* Fix 3: New Chat Button - Full width on mobile */}
         <button
           onClick={newChat}
           style={{
@@ -279,7 +299,12 @@ function Chat() {
               "all 0.3s ease",
 
             boxShadow:
-              "0 0 15px rgba(59,130,246,0.2)"
+              "0 0 15px rgba(59,130,246,0.2)",
+
+            width:
+              window.innerWidth < 768
+                ? "100%"
+                : "auto"
           }}
         >
           + New Chat
@@ -287,29 +312,29 @@ function Chat() {
 
       </div>
 
+      {/* Fix 2: Chat Container - Responsive padding and height */}
       <div
         ref={chatRef}
         style={{
-          background:
-            "#151824",
+          background: "#151824",
 
-          borderRadius:
-            "16px",
+          borderRadius: "16px",
 
           padding:
-            "25px",
+            window.innerWidth < 768
+              ? "15px"
+              : "25px",
 
           height:
-            "500px",
+            window.innerWidth < 768
+              ? "400px"
+              : "500px",
 
-          overflowY:
-            "auto",
+          overflowY: "auto",
 
-          marginBottom:
-            "20px",
+          marginBottom: "20px",
 
-          border:
-            "1px solid #2a2f45",
+          border: "1px solid #2a2f45",
 
           boxShadow:
             "0 0 25px rgba(59,130,246,0.15)"
@@ -332,10 +357,13 @@ function Chat() {
             }}
           >
 
+            {/* Fix 3: Welcome Title - Responsive font size */}
             <h3
               style={{
                 fontSize:
-                  "28px",
+                  window.innerWidth < 768
+                    ? "22px"
+                    : "28px",
 
                 color:
                   "#ffffff",
@@ -441,12 +469,17 @@ function Chat() {
                   }}
                 >
 
+                  {/* Fix 4: Assistant Message Width - Responsive max-width */}
                   <div
                     style={{
                       maxWidth:
-                        msg.role === "assistant"
-                           ? "85%"
-                           : "60%",
+                        window.innerWidth < 768
+                          ? "95%"
+                          : (
+                              msg.role === "assistant"
+                                ? "85%"
+                                : "60%"
+                            ),
                       textAlign:
                         msg.role === "assistant"
                           ? "left"
@@ -484,7 +517,10 @@ function Chat() {
                             <h1
                               style={{
                                 color: "#60a5fa",
-                                fontSize: "24px",
+                                fontSize:
+                                  window.innerWidth < 768
+                                    ? "20px"
+                                    : "24px",
                                 marginBottom: "15px"
                               }}
                             >
@@ -496,7 +532,10 @@ function Chat() {
                             <h2
                               style={{
                                 color: "#60a5fa",
-                                fontSize: "20px",
+                                fontSize:
+                                  window.innerWidth < 768
+                                    ? "18px"
+                                    : "20px",
                                 marginBottom: "12px"
                               }}
                             >
@@ -570,6 +609,7 @@ function Chat() {
 
       </div>
 
+      {/* Fix 5 & 6: Upload Card - Responsive flex and buttons */}
       {selectedFile && (
 
         <div
@@ -587,10 +627,20 @@ function Chat() {
 
             display: "flex",
 
+            flexDirection:
+              window.innerWidth < 768
+                ? "column"
+                : "row",
+
+            gap: "12px",
+
             justifyContent:
               "space-between",
 
-            alignItems: "center",
+            alignItems:
+              window.innerWidth < 768
+                ? "stretch"
+                : "center",
 
             color: "#ffffff"
           }}
@@ -603,7 +653,8 @@ function Chat() {
           <div
             style={{
               display: "flex",
-              gap: "10px"
+              gap: "10px",
+              flexWrap: "wrap"
             }}
           >
 
@@ -701,12 +752,14 @@ function Chat() {
     )
   }
 
+      {/* Fix 7: Input Area - Responsive layout */}
       <div
         style={{
           display: "flex",
           gap: "10px",
-          justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
+          width: "100%",
+          flexWrap: "wrap"
         }}
       >
 
@@ -761,6 +814,8 @@ function Chat() {
               >
                 <Plus size={20} />
           </button>
+        
+        {/* Fix 8: Question Input - Responsive width */}
         <input
           type="text"
           value={question}
@@ -784,29 +839,24 @@ function Chat() {
           }}
           placeholder="Ask a procurement question..."
           style={{
-            width:
-              "900px",
+            flex: 1,
+            minWidth: "200px",
 
-            padding:
-              "14px",
+            padding: "14px",
 
-            borderRadius:
-              "10px",
+            borderRadius: "10px",
 
-            border:
-              "1px solid #334155",
+            border: "1px solid #334155",
 
-            background:
-              "#111827",
+            background: "#111827",
 
-            color:
-              "#ffffff",
+            color: "#ffffff",
 
-            fontSize:
-              "16px"
+            fontSize: "16px"
           }}
         />
 
+        {/* Fix 9: Send Button - Responsive padding */}
         <button
           onClick={
             sendQuestion
@@ -816,7 +866,9 @@ function Chat() {
           }
           style={{
             padding:
-              "14px 28px",
+                window.innerWidth < 768
+                  ? "14px 18px"
+                  : "14px 28px",
 
             borderRadius:
               "12px",

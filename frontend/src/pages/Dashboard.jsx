@@ -78,13 +78,15 @@ function Dashboard() {
 
   return (
 
-    <div className="mb-12">
+    <div className="mb-10 md:mb-12">
 
       <h2
         className="
-          text-4xl
+          text-2xl
+          md:text-4xl
           font-bold
-          mb-8
+          mb-6
+          md:mb-8
           text-center
 
           bg-gradient-to-r
@@ -105,7 +107,8 @@ function Dashboard() {
           grid-cols-1
           md:grid-cols-2
           xl:grid-cols-4
-          gap-6
+          gap-4
+          md:gap-6
         "
       >
 
@@ -122,7 +125,9 @@ function Dashboard() {
                 backdrop-blur-md
 
                 rounded-3xl
-                p-8
+
+                p-5
+                md:p-8
 
                 border
                 border-blue-500/20
@@ -143,7 +148,9 @@ function Dashboard() {
                   flex
                   items-center
                   justify-between
-                  mb-6
+
+                  mb-4
+                  md:mb-6
                 "
               >
 
@@ -160,7 +167,7 @@ function Dashboard() {
                 </h3>
 
                 <Icon
-                  size={30}
+                  size={26}
                   className="
                     text-blue-400
                     drop-shadow-[0_0_12px_rgba(59,130,246,0.9)]
@@ -173,9 +180,13 @@ function Dashboard() {
 
                 <div
                   className="
-                    text-2xl
+                    text-lg
+                    md:text-2xl
+
                     font-bold
                     text-center
+
+                    break-words
 
                     bg-gradient-to-r
                     from-blue-300
@@ -192,12 +203,12 @@ function Dashboard() {
 
                 <div
                   className="
-                    text-4xl
-                    lg:grid-cols-2
-                    2xl:grid-cols-4
+                    text-3xl
+                    md:text-4xl
 
                     font-extrabold
-                    whitespace-nowrap
+
+                    break-words
 
                     bg-gradient-to-r
                     from-blue-300

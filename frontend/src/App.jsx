@@ -12,7 +12,8 @@ function App() {
         min-h-screen
         bg-slate-950
         text-white
-        p-8
+        px-3 py-4 
+        md:p-8
       "
     >
 
@@ -25,9 +26,11 @@ function App() {
 
         <h1
           className="
-            text-5xl
+            text-3xl
+            md:text-5xl
             font-bold
-            mb-10
+            mb-6
+            md:mb-10
             text-center
           "
         >
