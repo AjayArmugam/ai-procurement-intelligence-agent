@@ -24,8 +24,49 @@ def generate_response(
     context
 ):
 
-    print(
-        "OPENROUTER TEST STARTED"
-    )
+    print("OPENROUTER REQUEST STARTED")
 
-    return "OpenRouter test successful"
+    try:
+
+        response = client.chat.completions.create(
+
+            model="deepseek/deepseek-chat-v3",
+
+            messages=[
+                {
+                    "role": "system",
+                    "content":
+                    "You are a procurement assistant."
+                },
+                {
+                    "role": "user",
+                    "content":
+                    f"""
+Question:
+{question}
+
+Context:
+{context}
+"""
+                }
+            ],
+
+            temperature=0.3,
+            max_tokens=300
+        )
+
+        print("OPENROUTER RESPONSE RECEIVED")
+
+        return (
+            response
+            .choices[0]
+            .message
+            .content
+        )
+
+    except Exception as e:
+
+        print("OPENROUTER ERROR:")
+        print(e)
+
+        return str(e)
