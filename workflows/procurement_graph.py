@@ -153,7 +153,15 @@ def database_agent(state):
             invoice_number
         )
 
-        state["context"] = str(result)
+        if result:
+
+            state["context"] = str(result)
+
+        else:
+
+            state["context"] = (
+                "Invoice not found."
+            )
 
     else:
 

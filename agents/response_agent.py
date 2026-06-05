@@ -24,7 +24,22 @@ def generate_response(
     context
 ):
 
-    print("OPENROUTER REQUEST STARTED")
+    # =====================================
+    # Handle Missing Data
+    # =====================================
+
+    if (
+        context == "Invoice not found."
+        or context == "No invoice number found."
+    ):
+
+        return (
+            "The requested invoice could not be found."
+        )
+
+    print(
+        "OPENROUTER REQUEST STARTED"
+    )
 
     try:
 
@@ -60,7 +75,7 @@ Rules:
 1. Always provide professional and structured responses.
 2. Use markdown headings and bullet points.
 3. Never expose raw database records.
-4. Never mention LangGraph, databases, APIs, RAG, embeddings, or internal systems.
+4. Never mention LangGraph, databases, APIs, RAG, embeddings, vector databases, or internal systems.
 5. Keep answers concise and business-friendly.
 6. Focus on actionable insights.
 
@@ -73,6 +88,10 @@ For invoice questions use:
 - Amount
 - Status
 - Due Date
+
+### Business Justification
+
+Provide when available.
 
 ### Recommended Action
 
@@ -107,6 +126,8 @@ For risk questions use:
 ### Identified Risks
 
 ### Recommendations
+
+If information is missing, clearly state that it is unavailable.
 """
                 },
 
@@ -133,7 +154,9 @@ Provide a structured professional response.
 
         )
 
-        print("OPENROUTER RESPONSE RECEIVED")
+        print(
+            "OPENROUTER RESPONSE RECEIVED"
+        )
 
         return (
             response
@@ -144,14 +167,18 @@ Provide a structured professional response.
 
     except Exception as e:
 
-        print("\n========== OPENROUTER ERROR ==========")
+        print(
+            "\n========== OPENROUTER ERROR =========="
+        )
 
         traceback.print_exc()
 
         print("\nERROR MESSAGE:")
         print(repr(e))
 
-        print("\n=====================================\n")
+        print(
+            "\n=====================================\n"
+        )
 
         return (
             "Unable to generate a response at this time. "
