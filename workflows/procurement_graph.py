@@ -103,20 +103,26 @@ def detect_intent(state):
         or "line item" in question
         or "invoice details" in question
         or "invoice summary" in question
+        or "invoice" in question
+        or "vendor" in question
+        or "supplier" in question
+        or "purchase order" in question
+        or "procurement" in question
+        or "licenses" in question
+        or "software" in question
+        or "department" in question
     ):
         state["intent"] = "rag"
 
     elif (
-            "report" in question
-            or "executive" in question
-        ):
-            state["intent"] = "summary"
-
-    # RAG Queries
+        "report" in question
+        or "executive" in question
+    ):
+        state["intent"] = "summary"
 
     else:
 
-        state["intent"] = "rag"
+        state["intent"] = "out_of_scope"
 
     print(
         "Detected Intent:",
@@ -171,7 +177,16 @@ def database_agent(state):
 
     return state
 
+def out_of_scope_agent(state):
 
+    print("Entering Out Of Scope Agent")
+
+    state["answer"] = (
+        "I am an Enterprise Procurement Agent "
+        "and can only assist with procurement-related questions."
+    )
+
+    return state
 # =====================================
 # Approval Agent
 # =====================================
@@ -484,6 +499,10 @@ graph.add_node(
     "database_agent",
     database_agent
 )
+graph.add_node(
+    "out_of_scope",
+    out_of_scope_agent
+)
 
 graph.add_node(
     "approval_agent",
@@ -551,6 +570,9 @@ graph.add_conditional_edges(
         "risk":
         "risk_agent",
 
+        "out_of_scope":
+        "out_of_scope",
+
 
     }
 )
@@ -599,7 +621,10 @@ graph.add_edge(
     "response_agent",
     END
 )
-
+graph.add_edge(
+    "out_of_scope",
+    END
+)
 # Compile
 
 app = graph.compile()
