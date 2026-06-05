@@ -66,7 +66,13 @@ Context:
 
     except Exception as e:
 
-        print("OPENROUTER ERROR:")
-        print(e)
+        print("\n========== OPENROUTER ERROR ==========")
 
-        return str(e)
+        traceback.print_exc()
+
+        print("\nERROR MESSAGE:")
+        print(repr(e))
+
+        print("\n=====================================\n")
+
+        return f"ERROR: {str(e)}"
