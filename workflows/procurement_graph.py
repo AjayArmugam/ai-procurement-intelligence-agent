@@ -392,6 +392,11 @@ def rag_agent(state):
                     f"• {invoice}\n"
                 )
 
+                
+    print("\n========== RAG CONTEXT ==========")
+    print(context[:2000])
+    print("=================================\n")
+
     state["context"] = (
         context
         + source_text
