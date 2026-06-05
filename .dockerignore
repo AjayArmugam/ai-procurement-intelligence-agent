@@ -12,8 +12,6 @@ venv/
 
 node_modules/
 
-uploads/
-chroma_db/
 
 tests/
 evaluation/
