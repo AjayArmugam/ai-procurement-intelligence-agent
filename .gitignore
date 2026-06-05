@@ -11,9 +11,6 @@ venv/
 
 .env
 
-# ChromaDB
-
-chroma_db/
 
 # Node
 
