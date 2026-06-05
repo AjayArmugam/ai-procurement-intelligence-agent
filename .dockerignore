@@ -16,7 +16,7 @@ node_modules/
 tests/
 evaluation/
 
-*.pdf
+
 
 dist/
 build/

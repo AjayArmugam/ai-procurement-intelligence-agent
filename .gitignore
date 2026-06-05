@@ -38,7 +38,3 @@ build/
 # Testing
 
 .pytest_cache/
-
-# PDFs
-
-*.pdf
