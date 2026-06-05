@@ -192,7 +192,7 @@ function Chat() {
 
   return (
 
-    // Fix 2: Reduced container padding on mobile
+    // Reduced container padding on mobile
     <div
       style={{
         marginTop:
@@ -209,7 +209,7 @@ function Chat() {
       }}
     >
 
-      {/* Fix 1: Header Section - Responsive flex direction */}
+      {/* Header Section - Responsive flex direction */}
       <div
         style={{
           display: "flex",
@@ -270,7 +270,7 @@ function Chat() {
             }}
          />
 
-        {/* Fix 3: New Chat Button - Full width on mobile */}
+        {/* New Chat Button - Full width on mobile */}
         <button
           onClick={newChat}
           style={{
@@ -312,7 +312,7 @@ function Chat() {
 
       </div>
 
-      {/* Fix 2: Chat Container - Responsive padding and height */}
+      {/* Chat Container - Responsive padding and height */}
       <div
         ref={chatRef}
         style={{
@@ -357,7 +357,7 @@ function Chat() {
             }}
           >
 
-            {/* Fix 3: Welcome Title - Responsive font size */}
+            {/* Welcome Title - Responsive font size */}
             <h3
               style={{
                 fontSize:
@@ -469,7 +469,7 @@ function Chat() {
                   }}
                 >
 
-                  {/* Fix 4: Assistant Message Width - Responsive max-width */}
+                  {/* Assistant Message Width - Responsive max-width */}
                   <div
                     style={{
                       maxWidth:
@@ -609,7 +609,7 @@ function Chat() {
 
       </div>
 
-      {/* Fix 5 & 6: Upload Card - Responsive flex and buttons */}
+      {/* Upload Card - Responsive flex and buttons */}
       {selectedFile && (
 
         <div
@@ -752,7 +752,7 @@ function Chat() {
     )
   }
 
-      {/* Fix 7: Input Area - Responsive layout */}
+      {/* Input Area - Responsive layout */}
       <div
         style={{
           display: "flex",
@@ -815,7 +815,7 @@ function Chat() {
                 <Plus size={20} />
           </button>
         
-        {/* Fix 8: Question Input - Responsive width */}
+        {/* Question Input - Full width on mobile */}
         <input
           type="text"
           value={question}
@@ -840,7 +840,10 @@ function Chat() {
           placeholder="Ask a procurement question..."
           style={{
             flex: 1,
-            minWidth: "200px",
+            minWidth:
+              window.innerWidth < 768
+                ? "100%"
+                : "200px",
 
             padding: "14px",
 
@@ -856,7 +859,7 @@ function Chat() {
           }}
         />
 
-        {/* Fix 9: Send Button - Responsive padding */}
+        {/* Send Button - Full width on mobile when wrapped */}
         <button
           onClick={
             sendQuestion
@@ -897,7 +900,12 @@ function Chat() {
               "all 0.3s ease",
 
             boxShadow:
-              "0 0 20px rgba(37,99,235,0.4)"
+              "0 0 20px rgba(37,99,235,0.4)",
+
+            width:
+              window.innerWidth < 768
+                ? "100%"
+                : "auto"
           }}
           onMouseEnter={(e) => {
 
